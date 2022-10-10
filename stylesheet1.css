@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    
+    
+
+    width: 100%;
+
+    
+}
+body #bodyTop {
+    background: rgb(98, 174, 245);
+    height: 100px;
+    width: 75%;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+body #bodyTop #inputs{
+    align-content: center;
+    text-align: center;
+    position: relative;
+
+    
+    
+    
+}
