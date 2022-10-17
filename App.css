@@ -1,10 +1,10 @@
-.App{
+.App {
   text-align: center;
   width: 100%;
-  
 }
+
 .bodyTop {
-  background: rgb(98, 174, 245);
+  background: rgb(98,174,245);
   height: 100px;
   width: 45%;
   border-radius: 7px;
@@ -26,25 +26,7 @@
   font-weight: bold;
 }
 
-.upperDir{
-  height: 100px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  
-} 
-.upperDir input {
-  margin-inline-start: 10px;
-
-}
-
-.upperDir p {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 18px;
-}
-
-.lowerDir{
+.directory .lowerDir{
     height: 100px;
     display: inline-block;
     text-align: center;
@@ -53,6 +35,40 @@
     
 } 
 
-.lowerDir table {
-  border: 1px solid;
+.lowerDir .tableDiv tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.lowerDir .tableDiv tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.lowerDir .tableDiv tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.tableDiv th:first-child, .tableDiv td:first-child {
+  padding-left: 16px;
+}
+
+.tableDiv td, th {
+  width: 250px;
+  padding: 8px 8px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: top;
+  border: 2px solid black;
+}
+
+.tableDiv th {
+  font-weight: bold;
+}
+
+.tableDiv {
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
 }
