@@ -1,0 +1,60 @@
+.App .nav{
+  padding-top: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  
+}
+.navLeft {
+  padding-right: 20px;
+  width: 400px;
+}
+
+.App .holder {
+  display: flex;
+  justify-content: center;
+  
+}
+.boxLeft {
+  width: 300px;
+}
+
+.boxLeft .innerLBottom .imageLB {
+  border: 1px solid black;
+  width: 250px;
+  height: 250px;
+}
+.innerRBottom .repoHolder td, th {
+  width: 250px;
+  display: table-cell;
+  text-align: left;
+  border: 2px solid black;
+  padding: 8px 8px;
+}
+
+.nameKey, .unKey, .emailKey, .gistKey, .locationKey {
+  border: 1px solid black;
+  width: 250px;
+  height: 50px;
+  font-weight: bold;
+}
+
+.innerLBottom .imageLb {
+  border: 1px solid black
+}
+
+.navLeft #username{
+  width:100%;
+  height: 20px;
+}
+.nav button {
+  border-radius: 6px;
+  background-color: white;
+  font-weight: bold;
+  
+}
+
+.innerRBottom {
+  height: 510px;
+  overflow-y: scroll;
+}
