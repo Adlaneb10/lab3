@@ -1,19 +1,44 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.css'
 
 function EntryForm({ addEntryToPhoneBook }) {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     addEntryToPhoneBook({ name, phoneNumber, email });
+    setFormErrors(validate(name, phoneNumber, email));
+    setIsSubmit(true);
   };
+  useEffect(() => {
+    if(Object.keys(formErrors).length == 0 && isSubmit){
+      console.log(formErrors);
+    }
+  })
+  const validate = (checkName, checkNum, checkEmail) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]{2,}$/i; 
+    if (!checkName) {
+      errors.checkName = "Name is required"
+    }
+    if (!checkNum) {
+      errors.checkName = "Number is required"
+    }
+    if (!checkEmail) {
+      errors.checkName = "Email is required"
+    }
+    return errors;
+  };
+
   return (
     <div className="bodyTop">
       <form onSubmit={handleSubmit}>
         <input
+          maxLength={20}
           type="text"
           name="name"
           id="name"
@@ -28,8 +53,10 @@ function EntryForm({ addEntryToPhoneBook }) {
           placeholder="Mobile Number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
+          maxLength={10}
         />
         <input
+          maxLength={39}
           type="email"
           name="email"
           id="email"
@@ -50,13 +77,18 @@ function EntryForm({ addEntryToPhoneBook }) {
 function App() {
   const [entries, setEntries] = useState([]);
 
+  const [search, setSearch] = useState("");
+
   const addEntryToPhoneBook = (entry) => {
     setEntries(
       [...entries, entry].sort((a, b) =>
-        a.lastName.toLowerCase() > b.lastName.toLowerCase() ? 1 : -1
+       console.log(entries)
       )
     );
   };
+
+  const [show, setShow] = useState(true);
+
 
   return (
     <div className="App">
@@ -64,7 +96,8 @@ function App() {
       <div className='directory'>
           <div className='upperDir'>
             <p>Search Contact by Mobile No:</p>
-            <input type="text" id="search"></input>
+            <input type="text" id="search" onChange={(e) => setSearch(e.target.value)}></input>
+            {}
           </div>
           <div className='lowerDir'>
             <h1>Contacts Summary</h1>
@@ -74,16 +107,29 @@ function App() {
                 <th>Mobile</th>
                 <th>Email</th>
               </tr>
-              {entries.map((entry)=> (
+
+              {entries.filter((row) =>
+                !search.length || row.name
+                .toString()
+                .toLowerCase()
+                .includes(search.toString().toLowerCase()) 
+                )
+              .map((entry)=> (
                 <tr>
                   <th>{entry.name}</th>
                   <th>{entry.phoneNumber}</th>
                   <th>{entry.email}</th>
               </tr>
               ))}
-
+              
             </table>
           </div>
+        </div>
+        <div className ="test" id="test" >
+          {show && <p>hello</p>}
+                
+        {/* <button onClick={showDiv()}></button> */}
+          <button onClick={() => setShow(!show)}>Show/hide</button>
         </div>
     </div>
   );
