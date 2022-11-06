@@ -125,12 +125,6 @@ function App() {
             </table>
           </div>
         </div>
-        <div className ="test" id="test" >
-          {show && <p>hello</p>}
-                
-        {/* <button onClick={showDiv()}></button> */}
-          <button onClick={() => setShow(!show)}>Show/hide</button>
-        </div>
     </div>
   );
 }
