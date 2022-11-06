@@ -6,7 +6,6 @@ function App() {
   const [data, setData] = useState([]);
   const [repos, setRepos] =useState([]);
   const [userName, setUserName] = useState("");
-  let incrementer = 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,19 +52,20 @@ function App() {
               <img src={data.avatar_url} height="200px" width={"250px"}/>
             </div>
             <div className='nameKey'>
-              <p>Name: {data.name }</p>
+              <p>Name: {data?.name || ''}</p>
+
             </div>
             <div className='unKey'>
-              <p>Username: {data.login}</p>
+              <p>Username: {data?.login || ''}</p>
             </div>
             <div className='emailKey'>
-              <p>Email: {data.email}</p>
+              <p>Email: {data?.email || ''}</p>
             </div>
             <div className='locationKey'>
-              <p>Location: {data.location}</p>
+              <p>Location: {data?.location || ''}</p>
             </div>
             <div className='gistKey'>
-              <p>Number of Gists: {data.public_gists}</p>
+              <p>Number of Gists: {data?.public_gists || ''}</p>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ function App() {
                 return(
                 <div class="repoHolder">
                   <tr>
-                    <th>
+                    <th key={index}>
                       Name: {repos[index].name} 
                       <br></br>
                       <br></br>
